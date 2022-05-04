@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/navi.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/page.css" rel="stylesheet" type="text/css"/>
+
+    <title>Mypage</title>
+</head>
+<body>
+<!-- 맨 위 상단 네비게이션 바 -->
+<nav>
+    <div class="nav_container">
+        <div class="nav1">
+            <!--src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"-->
+            <img class="logo_text" src="/image/instagram_logo.png" alt="Instagram_logo">
+        </div>
+        <input id="search_icon" type="search" class="input_search" placeholder="검색">
+        <div class="nav2">
+            <img src="/image/home.png" alt="홈">
+            <img src="/image/DM.png" alt="DM">
+            <img src="/image/posting.png" alt="포스팅">
+            <img src="/image/other_feeds.png" alt="탐색">
+            <img src="/image/heart0.png" alt="활동">
+            <img class="profile_picture" src="/image/r_icon1.png" alt="마이페이지">
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- 메인 페이지 공간-->
+    <div class="my_page">
+        <!-- 프로필 표시 상단 -->
+        <div class="my_page_head">
+            <!-- 프로필 사진 -->
+            <div class="my_page_profile_img">
+                <img src="/image/r_feed3.png" alt="프로필 사진">
+            </div>
+            <!-- 닉네임&버튼(팔로우,more), (게시물,팔로워,팔로우 수), 이름 -->
+            <div class="my_page_head_right">
+                <!-- 닉네임 -->
+                <div class="nickname_and_button">
+                    <p>닉네임</p>
+                    <!-- follow 버튼 -->
+                    <div class="buttons">
+                        <button>팔로우</button>
+                        <button class="more"><img src="/image/more.svg" alt="more"></button>
+                    </div>
+                </div>
+                <div class="follows_and_followers">
+                    <!-- 게시물 -->
+                    <div class="follows_and_followers_margin">게시물 <b>22</b></div>
+                    <!-- 팔로워 -->
+                    <div class="follows_and_followers_margin">팔로워 <b>22</b></div>
+                    <!-- 팔로우 -->
+                    <div class="follows_and_followers_margin">팔로우 <b>22</b></div>
+                </div>
+                <!-- 이름 -->
+                <div>
+                    <p class="name_text"> 이름 </p>
+                </div>
+                <!-- 소개 글 -->
+                <div class="introduce_text">
+                    소개글은 라쿤이 처리했으니 안심하라구! 소개글은 라쿤이 처리했으니 안심하라구!
+                    소개글은 라쿤이 처리했으니 안심하라구! 소개글은 라쿤이 처리했으니 안심하라구!
+                    소개글은 라쿤이 처리했으니 안심하라구! 소개글은 라쿤이 처리했으니 안심하라구!
+                    소개글은 라쿤이 처리했으니 안심하라구! 소개글은 라쿤이 처리했으니 안심하라구!
+                </div>
+            </div>
+        </div>
+        <!-- 게시물 표시 중단 -->
+        <div class="other_link">
+            <!-- 좋아하는 음악, 블로그, 깃허브 링크 등 -->
+            <div>
+                <a href="#"><img src="/image/music.svg">
+                    <p class="other_link_text">Music</p>
+                </a>
+            </div>
+            <div>
+                <a href="#"><img src="/image/tistory.svg">
+                    <p class="other_link_text">Blog</p>
+                </a>
+            </div>
+            <div>
+                <a href="#"><img src="/image/github.svg">
+                    <p class="other_link_text">Github</p>
+                </a>
+            </div>
+        </div>
+        <!-- 게시글 목록 하단 -->
+        <div class="body_list">
+            <!-- 게시물, 저장됨, 태그됨 버튼 -->
+            <div class="body_button">
+                <button>게시글</button>
+                <button>저장됨</button>
+                <button>태그됨</button>
+            </div>
+            <!-- 하단 게시물 전체 박스 -->
+            <div class="body_pictures">
+                <!-- 각 게시글 -->
+                <div class="picture_boxes">
+                    <!-- 1 -->
+                    <div class="picture_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                    <!-- 2 -->
+                    <div class="picture_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                    <!-- 3 -->
+                    <div class="picture_last_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                </div>
+                <div class="picture_boxes">
+                    <!-- 1 -->
+                    <div class="picture_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                    <!-- 2 -->
+                    <div class="picture_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                    <!-- 3 -->
+                    <div class="picture_last_box">
+                        <img src="/image/r_feed3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
