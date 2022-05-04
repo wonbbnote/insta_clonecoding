@@ -26,3 +26,7 @@ Link = https://www.figma.com/file/w9vlRzqhJlaIvsUMPbwq2y/Untitled?node-id=0%3A1
 Link = https://docs.google.com/spreadsheets/d/10hDzP3v8OwbqG0Oz6WaFZXFW-QbfTwefOctX62MlZDU/edit#gid=0
 
 ![image](https://user-images.githubusercontent.com/102503017/166588686-2024b6ec-c0b0-4256-8485-a20aecfb04b1.png)
+
+## 4. ERD
+
+![image](https://user-images.githubusercontent.com/102952091/166613171-6cefb445-e4b4-4bc5-8e75-5ae0a586c6e9.png)
