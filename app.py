@@ -1,11 +1,10 @@
-from flask import Flask, render_template, jsonify, request, session, redirect, url_for
-
-app = Flask(__name__)
-
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://3.34.44.93', 27017, username="sparta", password="woowa")
-db = client.dbsparta_plus_week4
+client = MongoClient('localhost', 27017)
+db = client.insta
+
+app = Flask(__name__)
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -21,42 +20,58 @@ import datetime
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
 
+#########################################################################
 
-#################################
-##  HTML을 주는 부분             ##
-#################################
+#### HTML 화면 보여주기 ####
+
+# 로그인 상태 페이지?
 @app.route('/')
 def home():
-		# 현재 이용자의 컴퓨터에 저장된 cookie 에서 mytoken 을 가져옵니다.
+    # 현재 이용자의 컴퓨터에 저장된 cookie 에서 mytoken 을 가져옵니다.
     token_receive = request.cookies.get('mytoken')
     try:
-				# 암호화되어있는 token의 값을 우리가 사용할 수 있도록 디코딩(암호화 풀기)해줍니다!
+        # 암호화되어있는 token의 값을 우리가 사용할 수 있도록 디코딩(암호화 풀기)해줍니다!
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"id": payload['id']})
         return render_template('index.html', nickname=user_info["nick"])
-		# 만약 해당 token의 로그인 시간이 만료되었다면, 아래와 같은 코드를 실행합니다.
+    # 만약 해당 token의 로그인 시간이 만료되었다면, 아래와 같은 코드를 실행합니다.
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
-		# 만약 해당 token이 올바르게 디코딩되지 않는다면, 아래와 같은 코드를 실행합니다.
+        # 만약 해당 token이 올바르게 디코딩되지 않는다면, 아래와 같은 코드를 실행합니다.
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-
+# 로그인 페이지
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
-
+# 회원가입 페이지
 @app.route('/register')
 def register():
     return render_template('register.html')
 
+# 메인 페이지
+@app.route('/mainpage')
+def mainpage():
+    return render_template('mainpage.html')
 
-#################################
-##  로그인을 위한 API            ##
-#################################
+# comment 상세 페이지?
+@app.route('/detail/<keyword>')
+def detail(keyword):
+    return render_template("comment.html", word=keyword)
 
+# 마이 페이지
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
+
+#######################################################################################
+#### API 역할을 하는 부분 ####
+
+# 김성호
 # [회원가입 API]
 # id, pw, nickname을 받아서, mongoDB에 저장합니다.
 # 저장하기 전에, pw를 sha256 방법(=단방향 암호화. 풀어볼 수 없음)으로 암호화해서 저장합니다.
@@ -65,10 +80,11 @@ def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
     nickname_receive = request.form['nickname_give']
+    name_receive = request.form['name_give']
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
+    db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive, 'name' : name_receive})
 
     return jsonify({'result': 'success'})
 
@@ -94,7 +110,7 @@ def api_login():
         # exp에는 만료시간을 넣어줍니다. 만료시간이 지나면, 시크릿키로 토큰을 풀 때 만료되었다고 에러가 납니다.
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5000)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
@@ -131,6 +147,45 @@ def api_valid():
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
     except jwt.exceptions.DecodeError:
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
+
+######################################################################################
+# 김주훈
+
+######################################################################################
+# 박진우
+
+
+######################################################################################
+# 최희원
+# 팔로우 => POST
+@app.route('/api/follow', methods=['POST'])
+def test_post():
+    userid_receive = request.form['userid_give']
+    followid_receive = request.form['followid_give']
+    # userid의 팔로우 DB 안 follow키 리스트에 팔로우id추가
+    doc = {
+        'user_id': userid_receive,
+        'follow_id': followid_receive
+    }
+    db.follower.insert_one(doc)
+    # 유저id 팔로우 DB에 팔로우 id 추가
+    # 팔로우한 id 팔로우DB에 팔로잉 id 추가
+    return jsonify({'result': 'success', 'msg': '팔로우했다'})
+
+
+# 팔로우 취소 => POST
+@app.route('/api/unfollow', methods=['POST'])
+def test_cancel():
+    userid_receive = request.form['userid_give']
+    unfollowid_receive = request.form['unfollowid_give']
+    db.follower.delete_one({'user_id': userid_receive, 'follow_id': unfollowid_receive})
+    return jsonify({'result': 'success', 'msg': '언팔로우 했따'})
+
+# 팔로워 및 팔로잉 수 조회 => GET
+@app.route('/api/following', methods=['GET'])
+def test_get():
+    follower = list(db.follower.find({'user_id': '특정 닉네임'}, {'_id': False}))
+    return jsonify({'follower': len(follower)})
 
 
 if __name__ == '__main__':
