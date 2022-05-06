@@ -18,7 +18,7 @@ nav {
 }
 
 /* Instagram 로고 박스 */
-.nav1 {
+.nav_left {
     width: 370px;
     display: flex; /* 수평 */
     align-items: center; /* 세로 축 정렬 */
@@ -30,7 +30,7 @@ nav {
 }
 
 /* 아이콘 박스 */
-.nav2 {
+.nav_right {
     width: 370px;
     display: flex; /* 수평 */
     align-items: center; /* 세로 축 정렬 */
@@ -38,9 +38,19 @@ nav {
 }
 
 /* 아이콘 이미지 */
-.nav2 img {
+.nav_right button img {
+    width: 25px;
     height: 25px;
+    margin-left: -5px;
+}
+
+.nav_right button {
     margin-left: 25px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    border: none;
 }
 
 /* 검색 기능 */
