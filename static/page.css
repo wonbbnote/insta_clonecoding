@@ -109,12 +109,6 @@ main {
     margin: 30px;
 }
 
-/* 아이콘 별 a 태그 설정 */
-.other_link a {
-    text-decoration-line: none;
-    color: inherit;
-}
-
 /* 아이콘 이미지 설정 */
 .other_link img {
     width: 60px;
@@ -193,4 +187,80 @@ main {
 .picture_box img {
     width: 250px;
     height: 250px;
+}
+
+/* #################################################### */
+
+/* 활동(heart) 박스 */
+.activity {
+    width: 500px;
+    margin-top: 5px;
+    background-color: white;
+    position: fixed; /* 고정하기 위해 사용 */
+    /*position: absolute;*/
+    text-align: center;
+    border: 1px solid #DBDBDB;
+    border-radius: 1%;
+    display: none;
+}
+
+/* 활동(heart) 박스 안에 들어가는 여백값 */
+.activity_margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+/* 프로필 박스 */
+.profile_and_logout {
+    background-color: white;
+    width: 200px;
+    margin-top: 5px;
+    border: 1px solid #DBDBDB;
+    border-radius: 1%;
+    /*position: sticky;*/
+    display: block;
+    position: fixed; /* 고정하기 위해 사용 */
+    /*display: none;*/
+}
+
+/* 프로필 박스 내 프로필or로그아웃 버튼 설정 */
+.profile_and_logout button {
+    width: 200px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+/* 프로필or로그아웃 버튼이 한번 눌린다면 */
+.profile_and_logout button:active {
+    background-color: #EFEFEF;
+}
+
+/* 프로필or로그아웃 이미지 설정 */
+.profile_and_logout img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+/* 프로필or로그아웃 텍스트 설정 */
+.profile_and_logout p {
+    margin-top: 6px;
+}
+
+/* 프로필 박스 내 프로필 칸 */
+.pal_profile {
+    height: 30px;
+    display: flex;
+    margin: 5px;
+}
+
+/* 프로필 박스 내 로그아웃 칸*/
+.pal_logout {
+    height: 30px;
+    display: flex;
+    margin: 5px;
 }

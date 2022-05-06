@@ -6,28 +6,35 @@
     <link href="/static/navi.css" rel="stylesheet" type="text/css"/>
     <link href="/static/page.css" rel="stylesheet" type="text/css"/>
 
+    <script src="/static/page.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Mypage</title>
 </head>
 <body>
 <!-- 맨 위 상단 네비게이션 바 -->
 <nav>
     <div class="nav_container">
-        <div class="nav1">
+        <div class="nav_left">
             <!--src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"-->
             <img class="logo_text" src="/image/instagram_logo.png" alt="Instagram_logo">
         </div>
         <input id="search_icon" type="search" class="input_search" placeholder="검색">
-        <div class="nav2">
-            <img src="/image/home.png" alt="홈">
-            <img src="/image/DM.png" alt="DM">
-            <img src="/image/posting.png" alt="포스팅">
-            <img src="/image/other_feeds.png" alt="탐색">
-            <img src="/image/heart0.png" alt="활동">
-            <img class="profile_picture" src="/image/r_icon1.png" alt="마이페이지">
+        <div class="nav_right">
+            <button><img src="/image/home.png" alt="홈"></button>
+            <button><img src="/image/DM.png" alt="DM"></button>
+            <button><img src="/image/posting.png" alt="포스팅"></button>
+            <button><img src="/image/other_feeds.png" alt="탐색"></button>
+            <button onclick="openActivity()">
+                <img src="/image/heart0.png" alt="활동">
+            </button>
+            <button onclick="openProfile()">
+                <img class="profile_picture" src="/image/r_icon1.png" alt="마이페이지">
+            </button>
         </div>
     </div>
 </nav>
-
 <main>
     <!-- 메인 페이지 공간-->
     <div class="my_page">
@@ -130,6 +137,41 @@
             </div>
         </div>
     </div>
+    <!-- 활동(heart)을 누르면 열리는 박스 -->
+    <div class="activity" id="activity">
+        <div class="activity_margin">
+            <div>
+                <p>게시물 활동</p>
+            </div>
+            <div>
+                <p>다른 사람이 회원님의 게시물을 좋아하거나 댓글을 남기면 여기에 표시됩니다.</p>
+                <p>다른 사람이 회원님의 게시물을 좋아하거나 댓글을 남기면 여기에 표시됩니다.</p>
+                <p>다른 사람이 회원님의 게시물을 좋아하거나 댓글을 남기면 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+    <!-- 프로필을 누르면 열리는 박스 -->
+    <div class="profile_and_logout" id="profile_and_logout" style="display:none">
+        <!-- 프로필(해당 유저의 페이지로) -->
+        <button>
+            <a href="#">
+                <div class="pal_profile">
+                    <img src="/image/profile.png" alt="profile">
+                    <p>프로필</p>
+                </div>
+            </a>
+        </button>
+        <!-- 로그아웃(누르면 로그인 데이터를 날리고 로그인 페이지로 이동 -->
+        <button>
+            <a href="#">
+                <div class="pal_logout">
+                    <img src="/image/logout.png" alt="logout">
+                    <p>로그아웃</p>
+                </div>
+            </a>
+        </button>
+    </div>
 </main>
+
 </body>
 </html>
