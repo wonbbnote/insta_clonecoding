@@ -9,6 +9,11 @@ p, span {
     font-size: 14px;
 }
 
+a {
+    text-decoration-line: none;
+    color: inherit;
+}
+
 ul, li {
     margin: 0;
     padding: 0;
