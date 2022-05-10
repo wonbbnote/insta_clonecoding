@@ -78,21 +78,26 @@ function Feed_list() {
         success: function (response) {
             if (response["result"] == "success") {
                 let posts = response['posts'];
+                let cnt = 0;
+                let i_idv = "feed-box";
+                let f_idv = "";
                 for (let i = 0; i < posts.length; i++) {
                     let img = posts[i]['img']
                     let user_id = posts[i]['user_id']
 
                     if (i % 3 == 0) {
-                        let feeds_add_html = `<div class="picture_boxes" id="feeds-box">`
+                        f_idv = i_idv + cnt;
+                        let feeds_add_html = `<div class="picture_boxes" id=${f_idv}></div>`
                         $('#feeds-box').append(feeds_add_html)
+                        cnt+=1;
                     }
 
                     // 해당 a 부분에 로그인 시 사용된 user_id값으로 바꿔줄 것
                     if (user_id == 'a') {
-                        let feed_add_html = `<div class="picture_box">
+                        let feed_add_html2 = `<div class="picture_box">
                                                 <img src=${img} alt="">
-                                            </div>`
-                        $('#feed-box').append(feed_add_html)
+                                             </div>`
+                        $('#'+f_idv).append(feed_add_html2)
                     }
                 }
             }
