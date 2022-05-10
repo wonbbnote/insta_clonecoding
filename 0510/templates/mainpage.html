@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>INSTA_CLONECODING</title>
+    <script src="https://kit.fontawesome.com/b57dd44d80.js" crossorigin="anonymous"></script>
+    <link rel="script" href="/static/js/main.js">
+    <link rel="stylesheet" href="/static/styles/mainpage.css">
+    <style>
+        /*상단바*/
+        .nav-bar {
+            /*전체틀*/
+            background-color: white;
+            width: 100%;
+            height: 80px;
+
+            /*밑에 줄*/
+            border-bottom: 1px solid;
+            border-bottom-color: lightgrey;
+
+            /*CSS flex 속성*/
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            /*상단바 고정*/
+            position: fixed;
+            z-index: 3;
+            top: 0;
+        }
+
+        .insta_logo {
+            width: 140px;
+        }
+
+        .search_box {
+            background-color: lightgrey;
+            width: 290px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+
+            background-image: url("https://cdn-icons.flaticon.com/png/512/2811/premium/2811790.png?token=exp=1651446465~hmac=0cb66ff6a651cb53e9704855554ef4a1");
+            background-position: 3px center;
+            padding-left: 35px;
+            background-size: 25px;
+            background-repeat: no-repeat;
+        }
+
+        .fa-solid {
+            font-size: 29px;
+            letter-spacing: 15px;
+        }
+
+        /*##############################메인#################################*/
+
+        .main {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center; /*내용물 가운데로*/
+            background-color: whitesmoke;
+        }
+
+        /*#############################왼쪽 단################################*/
+        .left {
+            /*큰 틀 색/가로세로길이/테두리/여백*/
+            width: 650px;
+            margin: 20px 10px 10px 0px;
+        }
+
+        /*###########################네임 카드##############################*/
+        .posting_box {
+            /*큰 틀 색/가로세로길이/테두리*/
+            background-color: white;
+            width: 100%;
+            height: 1000px;
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+            margin-bottom: 10px;
+
+            position: relative;
+        }
+
+        .name_card {
+            /*큰 틀 색/가로세로길이/테두리*/
+            background-color: white;
+            height: 73px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+            /*밑에 줄*/
+            border-bottom: 1px solid;
+            border-bottom-color: gainsboro;
+
+            /*가로정렬*/
+            display: flex;
+            align-items: center;
+        }
+
+        .id_pic {
+            /*큰 틀 색/가로세로길이/테두리*/
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+
+            /*사진 둥글게*/
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .id_info {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: gray;*/
+            margin-left: 13px;
+        }
+
+        .id_loca {
+            color: gray;
+        }
+
+        .dot {
+            margin-left: auto;
+            margin-right: 10px;
+            font-size: 25px;
+            background-color: white;
+            border: none;
+        }
+
+        /* The Modal (background) */
+        .black_bg {
+            display: none; /* Hidden by default */
+            position: absolute; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            content: "";
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal_part {
+            display: none;
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -250px 0 0 -250px;
+            background: white;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .modal_close {
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            top: -30px;
+            right: 0;
+        }
+
+        .modal_close > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url(https://img.icons8.com/metro/26/000000/close-window.png);
+            text-indent: -9999px;
+        }
+
+        /* Modal Content/Box */
+        .modal-body {
+            background-color: white;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%; /* Could be more or less, depending on screen size */
+        }
+
+        .table {
+            line-height: 70px;
+        }
+
+
+        /*###########################사진###########################*/
+        .pictures {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: ;*/
+            width: 100%;
+            min-height: 600px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+            object-fit: contain;
+        }
+
+        .carousel-item {
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 600px;
+            object-fit: contain;
+
+        }
+
+        /*#########################아이콘들#########################*/
+        .icons {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: silver;*/
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .icon {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: gold;*/
+            width: 38px;
+            height: 38px;
+            margin-left: 7px;
+        }
+
+        .index {
+            /*큰 틀 색/가로세로길이/테두리*/
+            margin-right: 10px;
+            /*오른쪽 정렬*/
+            float: right;
+        }
+
+        /*########################사진 설명#########################*/
+        .pic_desc {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: darksalmon;*/
+            margin: 3px 7px 3px 7px;
+
+            /*말 줄임표 설정*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+        }
+
+        /*########################댓글 리스트#########################*/
+        .comment_list {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: chocolate;*/
+            margin: 0px 7px 3px 7px;
+        }
+
+        /*########################댓글 쓰는 곳#########################*/
+        .comment_box {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: skyblue;*/
+            width: 100%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-bottom: 5px;
+
+            /*아래로 붙이기*/
+            position: absolute;
+            bottom: 0;
+
+            text-align: center;
+        }
+
+        .smile {
+            /*큰 틀 색/가로세로길이/테두리*/
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+        }
+
+        .comment {
+            /*큰 틀 색/가로세로길이/테두리*/
+            width: 85%;
+            height: 40px;
+            margin-right: 7px;
+            border: none;
+        }
+
+        /*##############################오른쪽 단####################################*/
+        .right {
+            /*큰 틀 색/가로세로길이/테두리*/
+            width: 450px;
+            height: 500px;
+            margin-top: 20px;
+
+            /*오른단 고정*/
+            position: sticky;
+            top: 100px;
+        }
+
+        .its_me {
+            display: flex;
+            padding: 10px;
+            /*background-color: blue;*/
+            align-items: center;
+        }
+
+        .me_pic {
+            /*큰 틀 색/가로세로길이/테두리*/
+            width: 77px;
+            height: 77px;
+            margin: 5px 10px 5px 10px;
+
+            /*사진 둥글게*/
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .me_info {
+            /*큰 틀 색/가로세로길이/테두리*/
+            /*background-color: gray;*/
+            margin-left: 10px;
+            font-size: 18px;
+        }
+
+        .button {
+            /*background-color: gray;*/
+            font-size: 15px;
+            margin-left: auto;
+            color: skyblue;
+
+        }
+
+        .rec_id {
+            display: flex;
+            padding: 10px;
+            align-items: center;
+        }
+
+        .rec_info {
+            margin-left: 10px;
+            font-size: 15px;
+        }
+
+        .follow {
+            font-size: 15px;
+            color: skyblue;
+            margin-left: auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            function onClick() {
+                document.querySelector('.modal_part').style.display = 'block';
+                document.querySelector('.black_bg').style.display = 'block';
+                // $("#bg").scrollTop;
+                // $('body').css("overflow", "hidden");
+            }
+
+            function offClick() {
+                document.querySelector('.modal_part').style.display = 'none';
+                document.querySelector('.black_bg').style.display = 'none';
+                // $('body').css("overflow", "scroll");
+            }
+
+            document.getElementById('modal_btn').addEventListener('click', onClick);
+            document.getElementById('modal_btn2').addEventListener('click', onClick);
+            document.getElementById('modal_btn3').addEventListener('click', onClick);
+
+
+            document.querySelector('.modal_close').addEventListener('click', offClick);
+        };
+
+
+        $(document).ready(function () {
+
+            $('.pic_desc').each(function () {
+                var content = $(this).children('.desc');
+                var content_txt = content.text();
+                var content_txt_short = content_txt.substring(0, 60) + "...";
+                var btn_more = $('<a href="javascript:void(0)" class="more" style="float:right; color: grey;">더보기</a>');
+
+
+                $(this).append(btn_more);
+
+                if (content_txt.length >= 100) {
+                    content.html(content_txt_short)
+
+                } else {
+                    btn_more.hide()
+                }
+
+                btn_more.click(toggle_content);
+
+                function toggle_content() {
+                    if ($(this).hasClass('short')) {
+                        // 접기 상태
+                        $(this).html('더보기');
+                        content.html(content_txt_short)
+                        $(this).removeClass('short');
+                    } else {
+                        // 더보기 상태
+                        $(this).html('접기');
+                        content.html(content_txt);
+                        $(this).addClass('short');
+                    }
+                }
+            });
+        });
+
+
+    </script>
+    <script src="../static/js/main.js"></script>
+</head>
+
+<body>
+<div class="black_bg" id="bg"></div>
+<div class="modal_part">
+    <div class="modal_close"><a href="#">close</a></div>
+    <div class='table' style="text-align: center;">
+        <div style="border-bottom: 1px solid lightgrey; color: red;">신고</div>
+        <div style="border-bottom: 1px solid lightgrey; color: red;">팔로우 취소</div>
+        <div style="border-bottom: 1px solid lightgrey;">게시물로 이동</div>
+        <div style="border-bottom: 1px solid lightgrey;">공유대상</div>
+        <div style="border-bottom: 1px solid lightgrey;">링크 복사</div>
+        <div style="border-bottom: 1px solid lightgrey;">퍼가기</div>
+        <div>취소</div>
+    </div>
+</div>
+<!--#################################상단바########################################-->
+<header>
+    <div class="nav-bar">
+        <div>
+            <a onclick="window.location.reload()"><img class="insta_logo"
+                    src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"></a>
+        </div>
+        <div>
+            <input class="search_box" placeholder="검색" type="text" value="" id="search">
+        </div>
+        <div class="menu_icons">
+            <span><button onclick="go_posting()" style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-plus"></i></button></span>
+            <span><button style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-house"></i></button></span>
+            <span><button style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-paper-plane"></i></button></span>
+            <span><button style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-compass"></i></button></span>
+            <span><button style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-heart"></i></button></span>
+            <span><button style="border: none; outline: none; background-color: transparent;"><i class="fa-solid fa-circle-user"></i></button></span>
+        </div>
+    </div>
+</header>
+
+
+<!--##############################메인 홈페이지######################################-->
+<div class="main">
+    <!--###############################왼쪽 단#######################################-->
+    <section class="left" style="background-color:transparent;">
+        <div id="container">
+
+        </div>
+    </section>
+    <!--##############################오른쪽 단#######################################-->
+    <aside class="right">
+        <div class="its_me">
+            <div class="me_pic">
+                <img class="card-img-top"
+                     src="https://img.insight.co.kr/static/2020/09/12/700/w01awi37dy1ev0wtvzt5.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='me_info'>
+                <strong class="id_name">wonbb3313</strong>
+                <div class="id_loca">bucheon</div>
+            </div>
+            <div class="button"><a href="#">전환</a></div>
+        </div>
+        <strong style="display:flex; margin-left:20px; color:darkgrey; font-weight:bold;">회원님을 위한 추천
+            <span style="color:black; margin-left:auto; margin-right:10px;">모두보기</span></strong>
+        <div class="rec_id">
+            <div class="id_pic">
+                <img class="card-img-top"
+                     src="/static/na.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='rec_info'>
+                <strong class="id_name">fjjjg468</strong>
+                <div class="id_loca">당신을 팔로우합니다</div>
+            </div>
+            <div class="follow"><a href="#">팔로우</a></div>
+        </div>
+        <div class="rec_id">
+            <div class="id_pic">
+                <img class="card-img-top"
+                     src="/static/na2.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='rec_info'>
+                <strong class="id_name">wonbb3313</strong>
+                <div class="id_loca">그냥 추천했어요</div>
+            </div>
+            <div class="follow"><a href="#">팔로우</a></div>
+        </div>
+        <div class="rec_id">
+            <div class="id_pic">
+                <img class="card-img-top"
+                     src="/static/na3.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='rec_info'>
+                <strong class="id_name">jhggyuijh123</strong>
+                <div class="id_loca">California</div>
+            </div>
+            <div class="follow"><a href="#">팔로우</a></div>
+        </div>
+        <div class="rec_id">
+            <div class="id_pic">
+                <img class="card-img-top"
+                     src="/static/n4.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='rec_info'>
+                <strong class="id_name">tgjkm98</strong>
+                <div class="id_loca">China</div>
+            </div>
+            <div class="follow"><a href="#">팔로우</a></div>
+        </div>
+        <div class="rec_id">
+            <div class="id_pic">
+                <img class="card-img-top"
+                     src="/static/na5.jpg"
+                     alt="Card image cap">
+            </div>
+            <div class='rec_info'>
+                <strong class="id_name">ktjfhgf483</strong>
+                <div class="id_loca">3erwkr님이 팔로우합니다</div>
+            </div>
+            <div class="follow"><a href="#">팔로우</a></div>
+        </div>
+        <footer style="margin:20px 10px 0px 30px; list-style: none; font-size:13px; color:gray;">
+            <li></li>
+            <li>내일배움캠프 - 3번째 프로젝트_인스타 클론코딩</li>
+            <li>@ 최희원</li>
+        </footer>
+    </aside>
+</div>
+
+
+</body>
+
+</html>
