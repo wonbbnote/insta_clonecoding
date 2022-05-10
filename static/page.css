@@ -161,6 +161,9 @@ main {
 /* 게시물 공간 */
 .body_pictures {
     max-width: 810px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* 게시물의 사진 공간 : 3개씩 */
