@@ -1,0 +1,285 @@
+/* 프로필 페이지 전체 UI */
+main {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 55px;
+    padding-bottom: 55px;
+    /*background-color: #0095F6;*/
+    display: flex;
+    justify-content: center;
+}
+
+/* 프로필 전체 공간 */
+.my_page {
+    align-items: center;
+}
+
+/* 프로필 상단 부분 */
+.my_page_head {
+    display: flex;
+    margin-top: 50px;
+}
+
+/* 상단 프로필 사진 */
+.my_page_profile_img img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #DBDBDB;
+    border-radius: 100%;
+}
+
+/* 프로필 상단 오른쪽 부분 */
+.my_page_head_right {
+    width: 550px;
+    max-width: 550px;
+    margin-left: 50px;
+}
+
+/* 닉네임 및 팔로우 & More 버튼 */
+.nickname_and_button {
+    display: flex;
+}
+
+/* nickname_and_button 안에 들어가는 p 태그 */
+.nickname_and_button p {
+    font-size: 28px;
+}
+
+/* 팔로우 & more 버튼 buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+/* 팔로우 & more 버튼 상세 설정 */
+.buttons button {
+    margin: auto;
+    margin-left: 20px;
+    width: 60px;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 10%;
+    border: none;
+    background-color: #0095F6;
+    color: #FFFFFF;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+/* 팔로우 버튼 누를 시 한번 바뀌는 것 */
+.buttons button:active {
+    background-color: #00AAFF;;
+}
+
+/* more 버튼 설정 */
+.buttons button.more {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: #FFFFFF;
+}
+
+/* 게시물, 팔로워, 팔로우가 들어가는 공간 */
+.follows_and_followers {
+    display: flex;
+}
+
+/* 각 텍스트 우측 여백 간격 */
+.follows_and_followers_margin {
+    margin-right: 35px;
+}
+
+/* 유저의 이름이 들어가는 공간 설정 */
+.name_text {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+/* 페이지 소개 글 공간 */
+.introduce_text {
+
+}
+
+/* 프로필 중단 아이콘 URL */
+.other_link {
+    display: flex;
+    align-items: center; /* 세로 축 센터 */
+    justify-content: space-around; /* 사이 간 간격 생성 */
+    margin: 30px;
+}
+
+/* 아이콘 이미지 설정 */
+.other_link img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #DBDBDB;
+    border-radius: 100%;
+
+}
+
+/* 각 아이콘이 무엇인지 설명 */
+.other_link_text {
+    text-align: center;
+    margin-top: -5px;
+}
+
+/* 글 하단 게시글 목록 위에 경계선(실선) */
+.body_list {
+    max-width: 810px;
+    border-top: 1px solid #DBDBDB;
+}
+
+/* 게시물, 저장됨, 태그됨 버튼 설정 */
+.body_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* 각 버튼 별 상세 설정 */
+.body_button button {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 10%;
+    border: none;
+    background-color: #FFFFFF;
+    color: #8E8E8E;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+/* 버튼 누를 시 한번 바뀌는 것 */
+/* 여기는 active로 딱 한번 선택되는 것이 아닌 선택 고정 설정이 필요함 */
+.body_button button:active {
+    color: #000000;
+}
+
+/* 게시물 공간 */
+.body_pictures {
+    max-width: 810px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 게시물의 사진 공간 : 3개씩 */
+.picture_boxes {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+/* 게시물 사진 표시 설정 */
+.picture_box {
+    width: 250px;
+    height: 250px;
+    margin-right: 30px;
+    display: flex;
+}
+
+/* picture_box에 들어가는 이미지의 크기 */
+.picture_box img {
+    width: 250px;
+    height: 250px;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.picture_box img:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* #################################################### */
+
+/* 활동(heart) 박스 */
+.activity {
+    width: 500px;
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 5px;
+    background-color: white;
+    position: fixed; /* 고정하기 위해 사용 */
+    text-align: center;
+    border: 1px solid #DBDBDB;
+    border-radius: 1%;
+    display: none;
+}
+
+/* 활동(heart) 박스에서 스크롤바가 안보이도록 설정 */
+.activity::-webkit-scrollbar {
+    display: none;
+}
+
+/* 활동(heart) 박스 안에 들어가는 여백값 */
+.activity_margin {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+/* 활동(heart) 박스 내 <p> 태그들의 상/하 여백 */
+.activity_margin p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* 세부 활동들에 대한 텍스트 위치를 왼쪽으로 배치 */
+.other_activity {
+    text-align: left;
+}
+
+/* 프로필 박스 */
+.profile_and_logout {
+    background-color: white;
+    width: 200px;
+    margin-top: 5px;
+    border: 1px solid #DBDBDB;
+    border-radius: 1%;
+    display: block;
+    position: fixed; /* 고정하기 위해 사용 */
+}
+
+/* 프로필 박스 내 프로필or로그아웃 버튼 설정 */
+.profile_and_logout button {
+    width: 200px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+/* 프로필or로그아웃 버튼이 한번 눌린다면 */
+.profile_and_logout button:active {
+    background-color: #EFEFEF;
+}
+
+/* 프로필or로그아웃 이미지 설정 */
+.profile_and_logout img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+/* 프로필or로그아웃 텍스트 설정 */
+.profile_and_logout p {
+    margin-top: 6px;
+}
+
+/* 프로필 박스 내 프로필 칸 */
+.pal_profile {
+    height: 30px;
+    display: flex;
+    margin: 5px;
+}
+
+/* 프로필 박스 내 로그아웃 칸*/
+.pal_logout {
+    height: 30px;
+    display: flex;
+    margin: 5px;
+}

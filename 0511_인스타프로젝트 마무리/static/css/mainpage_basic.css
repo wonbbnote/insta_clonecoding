@@ -1,0 +1,293 @@
+.fa-solid {
+    font-size: 29px;
+    letter-spacing: 15px;
+}
+
+/*##############################메인#################################*/
+
+.main {
+    /*margin-top: 80px;*/
+    display: flex;
+    justify-content: center; /*내용물 가운데로*/
+    background-color: whitesmoke;
+}
+
+/*#############################왼쪽 단################################*/
+.left {
+    /*큰 틀 색/가로세로길이/테두리/여백*/
+    width: 650px;
+    margin: 70px 10px 10px 0px;
+}
+
+/*###########################네임 카드##############################*/
+.posting_box {
+    /*큰 틀 색/가로세로길이/테두리*/
+    background-color: white;
+    width: 100%;
+    height: 1000px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    position: relative;
+}
+
+.name_card {
+    /*큰 틀 색/가로세로길이/테두리*/
+    background-color: white;
+    width: 618px;
+    height: 73px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    /*밑에 줄*/
+    border-bottom: 1px solid;
+    border-bottom-color: gainsboro;
+
+    /*가로정렬*/
+    display: flex;
+    align-items: center;
+}
+
+.id_pic {
+    /*큰 틀 색/가로세로길이/테두리*/
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+
+    /*사진 둥글게*/
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.id_info {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: gray;*/
+    margin-left: 13px;
+}
+
+.id_loca {
+    color: gray;
+}
+
+.dot {
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 25px;
+    background-color: white;
+    border: none;
+}
+
+/* The Modal (background) */
+.black_bg {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    content: "";
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal_part {
+    display: none;
+    width: 500px;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    background: white;
+    border-radius: 20px;
+    z-index: 2;
+
+}
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+}
+
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+.modal_close > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(https://img.icons8.com/metro/26/000000/close-window.png);
+    text-indent: -9999px;
+}
+
+.table {
+    line-height: 70px;
+}
+
+
+/*###########################사진###########################*/
+.pictures {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: ;*/
+    width: 100%;
+    min-height: 600px;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    object-fit: contain;
+}
+
+.carousel-item {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    object-fit: contain;
+
+}
+
+/*#########################아이콘들#########################*/
+.icons {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: silver;*/
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.icon {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: gold;*/
+    width: 38px;
+    height: 38px;
+    margin-left: 7px;
+}
+
+.index {
+    /*큰 틀 색/가로세로길이/테두리*/
+    margin-right: 10px;
+    /*오른쪽 정렬*/
+    float: right;
+}
+
+/*########################사진 설명#########################*/
+.pic_desc {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: darksalmon;*/
+    margin: 3px 7px 3px 7px;
+
+    /*말 줄임표 설정*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+/*########################댓글 리스트#########################*/
+.comment_list {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: chocolate;*/
+    margin: 0px 7px 3px 7px;
+}
+
+/*########################댓글 쓰는 곳#########################*/
+.comment_box {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: skyblue;*/
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 5px;
+
+    /*아래로 붙이기*/
+    position: absolute;
+    bottom: 0;
+
+    text-align: center;
+}
+
+.smile {
+    /*큰 틀 색/가로세로길이/테두리*/
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.comment {
+    /*큰 틀 색/가로세로길이/테두리*/
+    width: 85%;
+    height: 40px;
+    margin-right: 7px;
+    border: none;
+}
+
+/*##############################오른쪽 단####################################*/
+.right {
+    /*큰 틀 색/가로세로길이/테두리*/
+    width: 450px;
+    height: 500px;
+    margin-top: 20px;
+
+    /*오른단 고정*/
+    position: sticky;
+    top: 100px;
+}
+
+.its_me {
+    display: flex;
+    padding: 10px;
+    /*background-color: blue;*/
+    align-items: center;
+}
+
+.me_pic {
+    /*큰 틀 색/가로세로길이/테두리*/
+    width: 77px;
+    height: 77px;
+    margin: 5px 10px 5px 10px;
+
+    /*사진 둥글게*/
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.me_info {
+    /*큰 틀 색/가로세로길이/테두리*/
+    /*background-color: gray;*/
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.button {
+    /*background-color: gray;*/
+    font-size: 15px;
+    margin-left: auto;
+    color: skyblue;
+
+}
+
+.rec_id {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.rec_info {
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.follow {
+    font-size: 15px;
+    color: skyblue;
+    margin-left: auto;
+}

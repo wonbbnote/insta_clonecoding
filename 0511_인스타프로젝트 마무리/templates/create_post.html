@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <title>Posting</title>
+    <link rel="stylesheet" type="text/css" href="/static/mainpage/background.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/posting.css"/>
+<!--    {#    <script type="text/javascript" src="/static/js/posting.js"></script>#}-->
+    <script type="text/javascript" src="/static/js/posting.js"></script>
+</head>
+<body>
+<div class="stars"></div>
+<div class="twinkling"></div>
+<div id="container">
+<!--        {#        <div id="img-check-wrapper">#}-->
+<!--        {#            <h2><b>이미지 미리보기</b></h2>#}-->
+<!--        {#            <div class="input_wrap">#}-->
+<!--        {#                <a href="javascript:" onclick="fileUploadAction()" class="my_button">파일 업로드</a>#}-->
+<!--        {#                <input type="file" id="input_imgs" multiple>#}-->
+<!--        {#            </div>#}-->
+<!--        {#        </div>#}-->
+<!--        {#        <div>#}-->
+<!--        {#            <div class="imgs_wrap">#}-->
+<!--        {#                <img id="img">#}-->
+<!--        {#            </div>#}-->
+<!--        {#        </div>#}-->
+    <div class="container-wrapper">
+        <div id="posting-wrapper">
+            <div class="logo-wrapper">
+            <div id="logo"><img src="/static/image/인스타로고.png"></div>
+            </div>
+            <div class="div-post">
+                <p><strong></strong></p>
+            </div>
+            <div style="text-align: center" class="img-wrapper">
+                <input style="text-align: center" type="file" id="file" class="lined-up file-css">
+            </div>
+            <div class="form-group">
+                <label for="content"></label>
+                <textarea class="form-control lined-up" name="content" id="content" rows="10" placeholder=""></textarea>
+            </div>
+            <div class="btn-wrapper">
+            <button class="btn lined-up" onclick=create_post()><span style="font-size: medium">등록하기</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

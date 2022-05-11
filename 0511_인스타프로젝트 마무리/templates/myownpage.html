@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/mypage_common.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/mypage_navi.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/mypage_page.css" rel="stylesheet" type="text/css"/>
+
+    <title>Mypage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/static/js/mypage_page.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            let me = $('#page_id').text();
+            console.log(me)
+            su(me);
+            su2(me);
+        });
+
+        function logout() {
+            console.log('로그아웃');
+            $.removeCookie('mytoken');
+            alert('로그아웃!')
+            window.location.href = '/login'
+        }
+
+        function openActivity() {
+            if ($("#activity").css("display") == "block") {
+                $("#activity").hide();
+            } else {
+                $("#activity").show();
+            }
+        }
+
+        //     $('#body').click(function (e) {
+        //     if(!$('#activity').has(e.target).length) $('#activity').hide();
+        // });
+
+        function openProfile() {
+            if ($("#profile_and_logout").css("display") == "block") {
+                $("#profile_and_logout").hide();
+            } else {
+                $("#profile_and_logout").show();
+            }
+        }
+
+        function loginOrnot() {
+            $('#su').empty();
+            $.ajax({
+                type: "GET",
+                url: "/api/nick",
+                data: {},
+                success: function (response) {
+
+                }
+            })
+        }
+
+        function su(nick) {
+            $.ajax({
+                type: "GET",
+                url: "/api/following?nickname_give=" + nick,
+                data: {},
+                success: function (response) {
+                    console.log(response['follower'])
+                    let su = response['follower']
+                    temp_html = `<b>${su}</b>`
+                    $('#su').append(temp_html)
+                }
+            })
+        }
+
+        function su2(nick) {
+            $.ajax({
+                type: "GET",
+                url: "/api/following2?nickname_give=" + nick,
+                data: {},
+                success: function (response) {
+                    console.log(response['follower'])
+                    let su2 = response['follower']
+                    temp_html = `<b>${su2}</b>`
+                    $('#su2').append(temp_html)
+                }
+            })
+        }
+
+
+    </script>
+</head>
+<body>
+<!-- 맨 위 상단 네비게이션 바 -->
+<nav>
+    <div class="nav_container">
+        <div class="nav_left">
+            <!--src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"-->
+            <a href="/mainpage"><img class="logo_text" src="static/image/instagram_logo.png" alt="Instagram_logo"></a>
+        </div>
+        <input id="search_icon" type="search" class="input_search" placeholder="검색">
+        <div class="nav_right">
+            <button><img src="static/image/home.png" alt="홈"></button>
+            <button><img src="static/image/DM.png" alt="DM"></button>
+            <button><img src="static/image/posting.png" alt="포스팅"></button>
+            <button><img src="static/image/other_feeds.png" alt="탐색"></button>
+            <button onclick="openActivity()">
+                <img src="static/image/heart0.png" alt="활동">
+            </button>
+            <button onclick="openProfile()">
+                <img class="profile_picture" src="/static/image/profile.png" alt="마이페이지">
+            </button>
+        </div>
+    </div>
+</nav>
+<main>
+    <!-- 메인 페이지 공간-->
+    <div class="my_page">
+        <!-- 프로필 표시 상단 -->
+        <div class="my_page_head">
+            <!-- 프로필 사진 -->
+            <div class="my_page_profile_img">
+                <img src="/static/image/profile.png" alt="프로필 사진">
+            </div>
+            <!-- 닉네임&버튼(팔로우,more), (게시물,팔로워,팔로우 수), 이름 -->
+            <div class="my_page_head_right">
+                <!-- 닉네임 -->
+                <div class="nickname_and_button">
+                    <p id="page_id">{{user_info.username}}</p>
+                    <!-- follow 버튼 -->
+                    <div class="buttons">
+                        <button class="more"><img src="static/image/more.svg" alt="more"></button>
+                    </div>
+                </div>
+                <div class="follows_and_followers">
+                    <!-- 팔로워 -->
+                    <div class="follows_and_followers_margin">팔로워 <b id="su"></b></div>
+                    <!-- 팔로우 -->
+                    <div class="follows_and_followers_margin">팔로우 <b id="su2"></b></div>
+                </div>
+                <!-- 소개 글 작성 버튼 -->
+                <div class="introduce_save">
+                    <button onclick="Introduce_list_post()">Introduce</button>
+                    <input id="introduce-itr">
+                </div>
+                <!-- 소개 글 -->
+                <div class="introduce_text" id="introduce-box"></div>
+            </div>
+        </div>
+        <!-- 게시물 표시 중단 -->
+        <div class="other_link">
+            <!-- 좋아하는 음악, 블로그, 깃허브 링크 등 -->
+            <div>
+                <a href="#"><img src="static/image/music.svg">
+                    <p class="other_link_text">Music</p>
+                </a>
+            </div>
+            <div>
+                <a href="#"><img src="static/image/tistory.svg">
+                    <p class="other_link_text">Blog</p>
+                </a>
+            </div>
+            <div>
+                <a href="https://github.com/wonbbnote/insta_clonecoding"><img src="static/image/github.svg">
+                    <p class="other_link_text">Github</p>
+                </a>
+            </div>
+        </div>
+        <!-- 게시글 목록 하단 -->
+        <div class="body_list">
+            <!-- 게시물, 저장됨, 태그됨 버튼 -->
+            <div class="body_button">
+                <button>게시글</button>
+                <button>저장됨</button>
+                <button>태그됨</button>
+            </div>
+            <!-- 하단 게시물 전체 박스 -->
+            <div class="body_pictures">
+                <div class="body_pictures" id="feeds-box"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 활동(heart)을 누르면 열리는 박스 -->
+    <div class="activity" id="activity">
+        <div class="activity_margin">
+            <div>
+                <p>게시물 활동</p>
+            </div>
+            <div class="other_activity" id="activity-box"></div>
+        </div>
+    </div>
+    <!-- 프로필을 누르면 열리는 박스 -->
+    <div class="profile_and_logout" id="profile_and_logout" style="display:none">
+        <!-- 프로필(해당 유저의 페이지로) -->
+        <button>
+            <a href="#">
+                <div class="pal_profile">
+                    <img src="static/image/profile.png" alt="profile">
+                    <p>프로필</p>
+                </div>
+            </a>
+        </button>
+        <!-- 로그아웃(누르면 로그인 데이터를 날리고 로그인 페이지로 이동 -->
+        <button>
+            <a>
+                <div class="pal_logout">
+                    <img src="static/image/logout.png" alt="logout">
+                    <p class="button is-danger" onclick="logout()">로그아웃</p>
+                </div>
+            </a>
+        </button>
+    </div>
+</main>
+
+</body>
+</html>
